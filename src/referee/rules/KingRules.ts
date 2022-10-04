@@ -22,3 +22,25 @@ export const kingMove = (
 
   return false;
 };
+
+export const getPossibleKingMoves = (
+  king: Piece,
+  boardState: Piece[]
+): Position[] => {
+  const possibleMoves: Position[] = [];
+
+  for (let i = -1; i < 2; ++i) {
+    for (let j = -1; j < 2; ++j) {
+      const destination: Position = {
+        x: king.position.x + i,
+        y: king.position.y + j,
+      };
+
+      if (isEmptyOrOccupiedByOpponent(destination, boardState, king.team)) {
+        possibleMoves.push(destination);
+      }
+    }
+  }
+
+  return possibleMoves;
+};

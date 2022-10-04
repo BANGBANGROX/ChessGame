@@ -6,7 +6,7 @@ import {
   TeamType,
 } from "../../Constants";
 
-export const isOccupied = (
+export const tileIsOccupied = (
   position: Position,
   boardState: Piece[]
 ): boolean => {
@@ -41,7 +41,7 @@ export const isEmptyOrOccupiedByOpponent = (
   team: TeamType
 ): boolean => {
   return (
-    !isOccupied(position, boardState) ||
+    !tileIsOccupied(position, boardState) ||
     tileIsOccupiedByOpponent(position, boardState, team)
   );
 };
